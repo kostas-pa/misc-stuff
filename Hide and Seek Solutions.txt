@@ -1,0 +1,30 @@
+Hide and Seek Solutions
+
+Theme: the theme of the challenge is tracking an APT group who left traces after a series of attacks and at the end it is revealed that the group was LAPSUS$
+
+Stage1:
+	input = key.txt, Trusted_Relationships.pdf (Locked with password)
+	key.txt = open with hexeditor to see the first bytes (Magic Bytes) that show the file is PNG and after you change the extention the password of the PDF will be revealed.
+	Trusted_Relationships.pdf = Inside the pdf there are 2 files. The first is the flag1 and the other is a WAV file for stage 2. (command line tool pdfdetach on linux)
+
+Stage2:
+	input = Silent_Attack.wav
+	Silent_Attack.wav = open with sonic visualizer and add a spectogram layer to reveal a QR code
+	QR code = it will redirect you to MEGA link to download an incident.zip file
+
+Stage3:
+	input = incident.zip
+	incident.zip = contains flag2 and a traffic.pcap file
+	traffic.pcap = Export the link_to_source.txt file from the http traffic which contains another MEGA link for downloading the Source_Code.zip file
+
+Stage4:
+	input = Source_Code.zip
+	Source_Code.zip = contains flag3 and a stage4.mem file to be analyzed with Volatility
+	stage4.mem = with volatility if you scan for cmd commands (cmdline module) the flag4 will be revealed as the name of a text file
+
+flag 1 = CTF{Th1rd_P@rty_Vend0r5_@re_R15ky}
+flag 2 = CTF{Y0u_Better_5ecure_Y0ur_RDP}
+flag 3 = CTF{Y0ur_Pr0ject'5_50urce_C0de_15_Le@ked}
+flag 4 = CTF{1_F0UND_Y0U_L@P5U5$}
+
+PDF password = N0_Brutef0rce
